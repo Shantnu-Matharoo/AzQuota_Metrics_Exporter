@@ -15,12 +15,12 @@ Define Prometheus metrics
 RESOURCE_QUOTA_LIMIT = Gauge('az_resource_quota_limit', 'Resource limit for an Azure resource', ['subscription_id', 'resource_type', 'resource_category', 'resource_location'])
 RESOURCE_QUOTA_USAGE = Gauge('az_resource_quota_usage', 'Resource usage for an Azure resource', ['subscription_id', 'resource_type', 'resource_category', 'resource_location'])
 
-client_id = 
-secret = 
-tenant = 
-listen_port =
-resource_location = 
-subscriptionId = 
+client_id = ""
+secret = ""
+tenant = ""
+listen_port = ""
+resource_location = "" 
+subscriptionId = ""
 
 '''
 Set credentials using the env vars.
@@ -45,10 +45,8 @@ def get_subscription():
     #     print(f'{group.subscription_id:<{column_width}}{group.display_name}')
     for sub in subs:
         if sub.state == "Enabled" and sub.subscription_id in subscriptionId:
-            print("1111")
             return True
         else:
-            print("0000")
             raise Exception("Subscriptionid not found/enabled")
 
 '''
