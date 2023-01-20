@@ -18,8 +18,8 @@ RESOURCE_QUOTA_USAGE = Gauge('az_resource_quota_usage', 'Resource usage for an A
 client_id = 
 secret = 
 tenant = 
-listen_port = "3000"
-resource_location = "West Europe"
+listen_port =
+resource_location = 
 subscriptionId = 
 
 '''
@@ -30,6 +30,26 @@ credentials = ServicePrincipalCredentials(
     secret=secret,
     tenant=tenant
 )
+
+'''
+Validating Subscription. 
+'''
+def get_subscription():
+    sub_client = SubscriptionClient(credentials)
+    subs = sub_client.subscriptions.list()
+    # column_width = 40
+
+    # print("Subscription ID".ljust(column_width) + "Display name")
+    # print("-" * (column_width * 2))
+    # for group in list(subs):
+    #     print(f'{group.subscription_id:<{column_width}}{group.display_name}')
+    for sub in subs:
+        if sub.state == "Enabled" and sub.subscription_id in subscriptionId:
+            print("1111")
+            return True
+        else:
+            print("0000")
+            raise Exception("Subscriptionid not found/enabled")
 
 '''
 Gets all limits and quotas for Compute Resources
@@ -80,11 +100,11 @@ if __name__ == '__main__':
         print(f'Value for variable LISTEN_PORT is {listen_port} and could not be converted to an integer. Please fix this issue and restart the application.')
         print('Stopping server.')
         exit
+    get_subscription()
     start_http_server(int(listen_port))
     print(f'Server sucessfully started. Listening on port {listen_port}')
     while True:
-        process_azure_compute
-        print("test")
-        # process_azure_network
-        # process_azure_storage
+        process_azure_compute()
+        process_azure_network()
+        process_azure_storage()
         time.sleep(3)
