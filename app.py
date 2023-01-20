@@ -105,4 +105,4 @@ if __name__ == '__main__':
         process_azure_compute()
         process_azure_network()
         process_azure_storage()
-        time.sleep(3)
+        time.sleep(5)
