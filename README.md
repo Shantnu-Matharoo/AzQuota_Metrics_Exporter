@@ -41,6 +41,7 @@ All the following variables need to be set. There are no defaults!
 - __TENANT__ (Your Azure tenant ID)
 - __LISTEN_PORT__ (The port you want the metrics server to be exposed to)
 - __LOCATION__ (Location of your resources i.e. 'westeurope')
+- __SUBSCRIPTIONID__ (The subscription ID for targated subscription)
 
 ### Prometheus Config
 
@@ -69,9 +70,10 @@ docker run -d -p "8000:8000" \
 --env TENANT=tenantid \
 --env LISTEN_PORT=8000 \
 --env LOCATION=westeurope \
+--env SUBSCRIPTIONID=subscriptionid \
 AzQuota_Metrics_Exporter
 ```
 
 
 
-The project is licensed under the GPLv2.
+The project is licensed under the Apache-2.0.
