@@ -1,4 +1,4 @@
-# metrics-exporter-for-az-quotas
+# AzQuota_Metrics_Exporter
 
 ## Metrics and Labels
 
@@ -46,7 +46,7 @@ Set the following job in your Prometheus config file:
 
 ```yaml
 scrape_configs:
-  - job_name: 'metrics-exporter-for-az-quotas'
+  - job_name: 'AzQuota_Metrics_Exporter'
     scrape_interval: 60s
     static_configs:
       - targets: ['<SVC Name>:<port>'] 
@@ -58,7 +58,7 @@ scrape_configs:
 
 The exporter is designed to be run inside a Docker Container but could also be run outside of one (not recommended). 
 
-Use the following command (substitute the placeholder values) to run the metrics-exporter-for-az-quotas:
+Use the following command (substitute the placeholder values) to run the AzQuota_Metrics_Exporter:
 
 ```text
 docker run -d -p "8000:8000" \
@@ -67,7 +67,9 @@ docker run -d -p "8000:8000" \
 --env TENANT=tenantid \
 --env LISTEN_PORT=8000 \
 --env LOCATION=westeurope \
-metrics-exporter-for-az-quotas
+AzQuota_Metrics_Exporter
 ```
+
+
 
 The project is licensed under the GPLv2.
