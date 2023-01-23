@@ -20,6 +20,7 @@ secret = os.getenv("SECRET")
 tenant = os.getenv("TENANT")
 listen_port = os.getenv("LISTEN_PORT")
 resource_location = os.getenv("LOCATION")
+subscriptionId = os.getenv("SUBSCRIPTIONID")
 
 '''
 Set credentials using the env vars.
@@ -37,7 +38,7 @@ def get_subscription():
     sub_client = SubscriptionClient(credentials)
     subs = sub_client.subscriptions.list()
     for sub in subs:
-        if sub.state == "Enabled" and sub.subscription_id in subscriptionId:
+        if sub.state == "Enabled" and subscriptionId in sub.subscription_id:
             return True
         else:
             raise Exception("Subscription not found/enabled")

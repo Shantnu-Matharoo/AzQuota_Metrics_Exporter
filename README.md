@@ -1,5 +1,7 @@
 # AzQuota_Metrics_Exporter
 
+This software helps us to export azure subscription quota mertics related to Network, Compute & Storage to Prometheus style metrics with a custom exporter
+
 ## Metrics and Labels
 
 The exporter exposes 2 metrics to Prometheus.
