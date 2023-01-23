@@ -58,7 +58,7 @@ scrape_configs:
 
 The exporter is designed to be run inside a Docker Container but could also be run outside of one (not recommended). 
 
-Use the following command (substitute the placeholder values) to run the azure-quota-exporter:
+Use the following command (substitute the placeholder values) to run the metrics-exporter-for-az-quotas:
 
 ```text
 docker run -d -p "8000:8000" \
